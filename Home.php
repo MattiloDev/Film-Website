@@ -25,7 +25,7 @@
         <?php include 'includes/headerNav.php'; ?>
 
 
-		<?php require('includes/database.php');
+		<?php require 'includes/database.php';
 		
 		
 			$names = $db->prepare("
