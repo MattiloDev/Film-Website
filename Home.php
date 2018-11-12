@@ -28,14 +28,14 @@
 		<?php require('includes/database.php');
 		
 		
-			$names = $db -> prepare("
+			$names = $db->prepare("
 		
 				SELECT TOP 5 name
 				FROM film
 				GROUP BY  name
 				ORDER BY max(theatricalRelease) desc
 
-			")
+			");
 
 			$names->execute();
 			
