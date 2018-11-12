@@ -24,6 +24,25 @@
 
         <?php include 'includes/headerNav.php'; ?>
 
+
+		<?php require('includes/database.php');
+		
+		
+			$names = $db -> prepare("
+		
+				SELECT TOP 5 name
+				FROM film
+				GROUP BY  name
+				ORDER BY max(theatricalRelease) desc
+
+			")
+
+			$names->execute();
+			
+	
+		
+		?>
+
         <div class= "container-fluid ">
 
         <div class= "row border-bottom border-white">
