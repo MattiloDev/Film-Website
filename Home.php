@@ -28,18 +28,27 @@
 		<?php require 'includes/database.php';
 		
 		
-			$names = $db->prepare("
+			$names = $db->prepare('
 		
-				SELECT TOP 5 name
+				SELECT TOP 5 * 
 				FROM film
-				GROUP BY  name
-				ORDER BY max(theatricalRelease) desc
+				ORDER BY MAX(theatricalRelease) desc
 
-			");
+			');
 
 			$names->execute();
 			
 	
+		
+		?>
+
+		<?php
+		
+			while ($result = $names->fetchObject('name')) {
+				echo $result;
+				echo "<br>";
+			
+		}
 		
 		?>
 
