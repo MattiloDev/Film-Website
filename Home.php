@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
 
@@ -22,7 +22,7 @@
 
         
 
-       <?php includes 'includes/headerNav.php'; ?>
+        <?php include 'includes/headerNav.php'; ?>
 
         <div class= "container-fluid ">
 
@@ -200,6 +200,10 @@
         </div>
 
         </div>
+
+
+		<?php include 'includes/footer.php'; ?>
+
 
 
 
