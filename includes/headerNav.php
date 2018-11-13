@@ -17,7 +17,7 @@
 
                 <a class = "navItem text-white pl-4 pr-4" href = "Home.html">
 
-                    Genres  
+                    Genres
 
                 </a>
 
@@ -26,7 +26,7 @@
                     About
 
                 </a>
-            
+
                   </div>
 
             </nav>
