@@ -25,33 +25,29 @@
         <?php include 'includes/headerNav.php'; ?>
 
 
+		
+
 		<?php require 'includes/database.php';
 
 
-	  $names = $db->prepare('
-
-			SELECT *
-			FROM film
-			WHERE id = 1
 
 
+			 $names = $db->prepare('
+
+				SELECT *	
+				FROM film
+				LIMIT 5;
+				ORDER BY theatricalRelease Desc;
+			
 			');
 
 		    $names->execute();
 
-			$result = $names->fetchAll();
-
-			print_r($result);
-
-
-        	//			SELECT TOP 5 *
-        		//		FROM film
-        			//	ORDER BY MAX(theatricalRelease) desc
-
+			$latest5 = $names->fetchAll();
 
 		?>
 
-
+		
 
 
         <div class= "container-fluid ">
@@ -80,7 +76,7 @@
 
                                     <div class = "col-md-8">
 
-                                        <H1 class = "text-white">Film title</H1>
+                                        <H1 class = "text-white"><?php echo $latest5[0] -> name; ?> </H1>
 
                                         <p class = "text-white">Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
 
@@ -113,7 +109,7 @@
 
                                         <div class = "col-md-8">
 
-                                            <H1>Film title</H1>
+                                            <H1><?php echo $latest5[1] -> name; ?></H1>
 
                                             <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
 
@@ -146,7 +142,7 @@
 
                                             <div class = "col-md-8">
 
-                                                <H1>Film title</H1>
+                                                <H1><?php echo $latest5[2] -> name; ?></H1>
 
                                                 <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
 
