@@ -1,5 +1,5 @@
  <nav class="navbar navbar-dark navbar-expand-md bg-dark border-bottom border-white ">
-                <a class="navbar-brand" href="Home.html">
+                <a class="navbar-brand" href="Home.php">
                   <img class="p-2" src="Assets/logo_cropped.png" height= "80" alt="Film Site logo">
                 </a>
 
@@ -9,19 +9,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <a class = "navItem text-white pl-4 pr-4" href = "Home.html">
+                <a class = "navItem text-white pl-4 pr-4" href = "Home.php">
 
                     Home
 
                 </a>
 
-                <a class = "navItem text-white pl-4 pr-4" href = "Home.html">
+                <a class = "navItem text-white pl-4 pr-4" href = "Home.php">
 
                     Genres
 
                 </a>
 
-                <a class = "navItem text-white pl-4 pr-4" href = "Home.html">
+                <a class = "navItem text-white pl-4 pr-4" href = "Home.php">
 
                     About
 
