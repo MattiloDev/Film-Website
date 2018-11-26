@@ -25,7 +25,7 @@
         <?php include 'includes/headerNav.php'; ?>
 
 
-		
+
 
 		<?php require 'includes/database.php';
 
@@ -34,26 +34,32 @@
 
 			 $names = $db->prepare('
 
-				SELECT *	
+				SELECT *
 				FROM film
 				LIMIT 5;
 				ORDER BY theatricalRelease Desc;
-			
+
 			');
 
-		    $names->execute();
+      $random = $db->prepare('
 
+       SELECT *
+       FROM film
+       ORDER BY RAND();
+       LIMIT 1;
+
+
+     ');
+
+		  $names->execute();
 			$latest5 = $names->fetchAll();
 
+
 		?>
-
-		
-
 
         <div class= "container-fluid ">
 
         <div class= "row border-bottom border-white">
-
 
 
             <div class = "col-md-8  p-4 pt-3 pb-5 carosel">
@@ -64,46 +70,51 @@
                             <div class="carousel-inner">
                               <div class="carousel-item active">
 
+
+                                <a href="filmPage.php? id=<?php echo $latest5[0]->id;?>">
+
+
                                 <div class = "container">
 
                                 <div class = "row ">
 
                                     <div class = "col-md-4">
 
-                                         <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/22_massive.jpg"  height="350" alt="First slide">
+                                         <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[0]->id?>_massive.jpg"  height="350" alt="First slide">
 
                                     </div>
 
                                     <div class = "col-md-8">
 
-                                        <H1 class = "text-white"><?php echo $latest5[0] -> name; ?> </H1>
+                                        <H1 > <?php echo $latest5[0] -> name; ?> </H1>
 
-                                        <p class = "text-white">Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
+                                        <p class = "text-white"><?php echo $latest5[0] -> description; ?>   </p>
 
-                                        <p class = "text-white">Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc </p>
+
 
 
                                     </div>
 
                                 </div>
 
+                              </div>
 
-
-
-                                </div>
+                              </a>
 
 
                               </div>
 
                               <div class="carousel-item ">
 
+
+                                    <a href="filmPage.php? id=<?php echo $latest5[1]->id;?>">
                                     <div class = "container">
 
                                     <div class = "row">
 
                                         <div class = "col-md-4">
 
-                                             <img  src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/14_massive.jpg" height="350" alt="First slide">
+                                             <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[1]->id?>_massive.jpg"  height="350" alt="First slide">
 
                                         </div>
 
@@ -111,9 +122,9 @@
 
                                             <H1><?php echo $latest5[1] -> name; ?></H1>
 
-                                            <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
 
-                                            <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc </p>
+
+                                            <p class = "text-white"><?php echo $latest5[1] -> description; ?>   </p>
 
 
                                         </div>
@@ -124,19 +135,21 @@
 
 
                                     </div>
+                                  </a>
 
 
                                   </div>
 
                                   <div class="carousel-item">
 
+                                        <a href="filmPage.php? id=<?php echo $latest5[2]->id;?>">
                                         <div class = "container">
 
                                         <div class = "row">
 
                                             <div class = "col-md-4">
 
-                                                 <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/10_massive.jpg"  height="350" alt="Poster">
+                                                 <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[2]->id?>_massive.jpg"  height="350" alt="First slide">
 
                                             </div>
 
@@ -144,19 +157,20 @@
 
                                                 <H1><?php echo $latest5[2] -> name; ?></H1>
 
-                                                <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  Film desc desc desc desc desc desc  </p>
 
-                                                <p>Film desc desc desc desc desc desc Film desc desc desc desc desc desc  Film desc desc desc desc desc desc </p>
+
+                                                <p class = "text-white"><?php echo $latest5[2] -> description; ?>   </p>
 
 
                                             </div>
 
                                         </div>
 
-
+                                        <?php  $names->closeCursor(); ?>
 
 
                                         </div>
+                                      </a>
 
 
                                       </div>
@@ -182,11 +196,18 @@
 
             <div class = "col-md-4 text-center bg-dark">
 
+              <?php
+
+              $random->execute();
+              $randomFilm = $random->fetchAll();
+
+               ?>
+
                 <h1 class ="p-3 text-danger marker"> Film of the Day</h1>
 
-                <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/3_massive.jpg" height = "350" alt = "Film of the day" >
+                <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $randomFilm[0]->id;?>_massive.jpg" height = "350" alt = "Film of the day" >
 
-                <h2 class = "p-3  text-danger"> Captain Phillips </h2>
+                <h2 class = "p-3  text-danger"> <?php echo $randomFilm[0] -> name; ?> </h2>
 
             </div>
 
