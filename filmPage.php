@@ -71,13 +71,13 @@
 
               <div class = "row">
 
-              <div class = "col-sm-4 pl-2 pr-4">
+              <div class = "col-xl-4 pl-2 center pr-4">
 
                      <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $info[$filmID]->id?>_massive.jpg"  height="500" alt="First slide">
 
               </div>
 
-              <div class = "col-sm-8 ">
+              <div class = "col-xl-8 ">
 
                 <h1 class = "pb-3 marker text-white"> <?php echo $info[$filmID]->name?> </h1>
 
@@ -95,12 +95,58 @@
 
           </div>
 
+          <h1 class = "text-center text-white marker"> reviews </h1>
+
+
           <div class = row>
 
-              <h1 class = "text-center"> reviews </h1>
+              
+
+              <p class = "text-white"> User like ratio : 50% </P> <br>
+              <p class = "text-white"> IMDB score: 6.8 </p>
 
             </div>
 
+            <div class = row>
+
+            <h2 class = "marker text-white"> leave a review: </h2>
+
+            <div class="form-group">
+
+			      <?php $getId=$_GET["id"];?>
+
+				    <form action="reviewValidation.php" method="post">
+
+           <p class = "text-white"> Name: </p>
+           
+          <input class="form-control" type="text" Name="reviewerName">
+
+				  <p class = "text-white"> Review (500 word MAX): <br> <input class="form-control" rows = "7" type="text"  Name="reviewContent">
+
+
+           <div class="form-check">
+           <input class="form-check-input" type="radio" name="likeDislike" id="true" value="TRUE" checked>
+           <label class="form-check-label text-white" for="exampleRadios1">
+            Liked
+           </label>
+           </div>
+
+          <div class="form-check">
+          <input class="form-check-input" type="radio" name="likeDislike" id="false" value="FALSE">
+          <label class="form-check-label text-white" for="exampleRadios2">
+          Disliked
+          </label>
+          </div>
+
+					<input class="btn btn-primary" type="Submit"> 
+
+					<input type='hidden' name='carID' value='<?php echo $getId ?>'/>
+
+					</div>
+
+
+				</form>
+			</div>
 
 
         </div>

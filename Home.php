@@ -71,7 +71,7 @@
                               <div class="carousel-item active">
 
 
-                                <a href="filmPage.php? id=<?php echo $latest5[0]->id;?>">
+                                <a class ="link" href="filmPage.php? id=<?php echo $latest5[0]->id;?>">
 
 
                                 <div class = "container">
@@ -107,7 +107,7 @@
                               <div class="carousel-item ">
 
 
-                                    <a href="filmPage.php? id=<?php echo $latest5[1]->id;?>">
+                                    <a class ="link" href="filmPage.php? id=<?php echo $latest5[1]->id;?>">
                                     <div class = "container">
 
                                     <div class = "row">
@@ -142,7 +142,7 @@
 
                                   <div class="carousel-item">
 
-                                        <a href="filmPage.php? id=<?php echo $latest5[2]->id;?>">
+                                        <a class ="link" href="filmPage.php? id=<?php echo $latest5[2]->id;?>">
                                         <div class = "container">
 
                                         <div class = "row">
