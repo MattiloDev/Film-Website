@@ -17,6 +17,7 @@
   </head>
   <body>
 
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -41,9 +42,17 @@
          SELECT *
          FROM film
 
+       ');
 
+       $reviewInfo = $db->prepare('
+       
+        SELECT *
+        FROM review
 
        ');
+
+      $reviewInfo->execute();
+      $reviews = $reviewInfo->fetchAll();
 
       $filmInfo->execute();
  			$info = $filmInfo->fetchAll();
@@ -52,6 +61,8 @@
 
 
       <div class="row">
+
+       <?php  var_dump($reviews); ?>
 
         <div class = "col-2 carosel">
 
@@ -62,12 +73,6 @@
         <div class = "col-8 bg-dark p-4">
 
           <div class = "container p-2">
-
-
-
-
-
-
 
               <div class = "row">
 
@@ -87,10 +92,6 @@
                 <p class = "text-white"> <?php echo $info[$filmID]->description?></p>
 
 
-
-
-
-
               </div>
 
           </div>
@@ -98,18 +99,17 @@
           <h1 class = "text-center text-white marker"> reviews </h1>
 
 
-          <div class = row>
-
-              
-
-              <p class = "text-white"> User like ratio : 50% </P> <br>
+              <p class = "text-white"> User like ratio : 50% </P> 
               <p class = "text-white"> IMDB score: 6.8 </p>
 
-            </div>
+           
+
+          <h2 class = "marker text-white"> leave a review: </h2>
+
 
             <div class = row>
 
-            <h2 class = "marker text-white"> leave a review: </h2>
+            
 
             <div class="form-group">
 
@@ -121,32 +121,37 @@
            
           <input class="form-control" type="text" Name="reviewerName">
 
-				  <p class = "text-white"> Review (500 word MAX): <br> <input class="form-control" rows = "7" type="text"  Name="reviewContent">
+				  <p class = "text-white"> Review (500 word MAX): <br>
+          
+          <input class="form-control" rows = "7" type="text"  Name="reviewContent">
 
-
-           <div class="form-check">
-           <input class="form-check-input" type="radio" name="likeDislike" id="true" value="TRUE" checked>
-           <label class="form-check-label text-white" for="exampleRadios1">
-            Liked
-           </label>
-           </div>
+          <div class="form-check">
+          <input class="form-check-input" type="radio" name="likeDislike" id="true" value="TRUE" checked>
+          <label class="form-check-label text-white" for="true">
+           Liked
+          </label>
+          </div>
 
           <div class="form-check">
           <input class="form-check-input" type="radio" name="likeDislike" id="false" value="FALSE">
-          <label class="form-check-label text-white" for="exampleRadios2">
-          Disliked
+          <label class="form-check-label text-white" for="false">
+           Disliked
           </label>
           </div>
 
 					<input class="btn btn-primary" type="Submit"> 
 
-					<input type='hidden' name='carID' value='<?php echo $getId ?>'/>
+					<input type='hidden' Name='reviewID' value='<?php echo $getId; ?>'/>
 
 					</div>
 
 
 				</form>
+
+
 			</div>
+
+     
 
 
         </div>

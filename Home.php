@@ -39,19 +39,26 @@
 				LIMIT 5;
 				ORDER BY theatricalRelease Desc;
 
-			');
+            ');
 
-      $random = $db->prepare('
+            $number = $db->prepare('
 
-       SELECT *
-       FROM film
-       ORDER BY RAND();
-       LIMIT 1;
+                SELECT COUNT (*)
+                FROM film;
+            
+            ');
+
+             $random = $db->prepare('
+
+                SELECT *
+                FROM film
+                ORDER BY RAND();
+                LIMIT 1;
 
 
-     ');
+            ');
 
-		  $names->execute();
+		    $names->execute();
 			$latest5 = $names->fetchAll();
 
 
@@ -200,6 +207,7 @@
 
               $random->execute();
               $randomFilm = $random->fetchAll();
+             
 
                ?>
 
@@ -208,6 +216,8 @@
                 <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $randomFilm[0]->id;?>_massive.jpg" height = "350" alt = "Film of the day" >
 
                 <h2 class = "p-3  text-danger"> <?php echo $randomFilm[0] -> name; ?> </h2>
+
+                
 
             </div>
 
@@ -223,7 +233,14 @@
 
                  <h1 class ="p-3 text-danger marker"> Movies Tracked </h1>
 
-                 <p class = "text-danger"> Movies on Database : 70</p>
+                 <?php
+
+                    $number->execute();
+                    $numberOfFilms = $random->fetchAll();
+
+                ?>
+
+                 <p class = "text-danger"> Movies on Database :<?php echo numberOfFilms[0]; ?> </p>
 
                  <p class = "text-danger"> Most Popular Genre : Action </p>
 

@@ -1,22 +1,20 @@
 
 <?php 
 
-	$name=$_POST[reviewerName];
-	$review=$_POST[reviewContent];
-	$filmID=$_POST[id];
-	
     include 'includes/database.php'; 
-    
 
-    $Statement = $database->prepare('
+	$name=$_POST['reviewerName'];
+	$review=$_POST['reviewContent'];
+    $filmID=$_POST['reviewID'];
+    $liked = $_POST['likeDislike'];
+	
+    $Statement = $db->prepare('
     
+		INSERT INTO review (film_id, reviewer, comment,liked)
+        VALUES (:filmid,:name,:comment,:liked);
 
-		INSERT INTO review (id, film_id, reviewer, comment,liked)
-        VALUES (:id,:filmID,:name,:comment,:liked )');
+        ');
         
-
-    $Statement->execute(array('filmid' => $$filmID, ':name'=> $name, ':value' => $value));
+    $Statement->execute(array(':filmid' => $filmID,':name' => $name,':comment' => $review, ':liked' => $liked));
     
-
-
-    ?>
+?>
