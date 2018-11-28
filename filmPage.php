@@ -32,8 +32,8 @@
 
         } else {
 
-          $filmID = $_GET["id"];
-          $filmID = $filmID - 1;
+          $filmIDpre = $_GET["id"];
+          $filmID = $filmIDpre - 1;
 
         }
 
@@ -48,6 +48,8 @@
        
         SELECT *
         FROM review
+        WHERE  film_id = '.$filmIDpre.'
+        LIMIT 10;
         
 
        ');
@@ -127,14 +129,14 @@
           <input class="form-control" rows = "7" type="text"  Name="reviewContent">
 
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="likeDislike" id="true" value="TRUE" checked>
+          <input class="form-check-input" type="radio" name="likeDislike" id="true" value="1" checked>
           <label class="form-check-label text-white" for="true">
            Liked
           </label>
           </div>
 
           <div class="form-check">
-          <input class="form-check-input" type="radio" name="likeDislike" id="false" value="FALSE">
+          <input class="form-check-input" type="radio" name="likeDislike" id="false" value="0">
           <label class="form-check-label text-white" for="false">
            Disliked
           </label>
@@ -153,11 +155,44 @@
 
 			</div>
 
-        <h2> aosijdsajdsaklsklajdjsaljsalkdjaskldjdsla d </h2>
+      
 
 
 
         </div>
+
+          <h2> User Reviews:  </h2>
+
+
+          <?php foreach ($reviews as $review) { ?>
+
+          <div class = "border-top border-bottom">
+
+          <h3 class ="p-3 text-danger marker"> <?php echo $review->reviewer; ?> </h3>
+          <p class= "text-white">  <?php
+          
+          if ($review->liked = '1') {
+
+            echo 'Liked It';
+
+          }
+
+          elseif ($review->liked = '0') {
+
+            echo "didn't like it";
+
+          }
+          
+          
+          ?> </p>
+
+          <p class= "text-white"> Review: <?php echo $review->comment; ?> </p>
+
+          </div>
+
+        <?php  } ?>
+
+        
 
         </div>
 
@@ -167,7 +202,7 @@
 
         </div>
 
-        <?php include 'includes/footer.php'; ?>
+        <?php // include 'includes/footer.php'; ?>
   </body>
 
 

@@ -7,6 +7,10 @@
 	$review=$_POST['reviewContent'];
     $filmID=$_POST['reviewID'];
     $liked = $_POST['likeDislike'];
+
+    var_dump($liked);
+
+
 	
     $Statement = $db->prepare('
     
