@@ -43,7 +43,7 @@
 
             $number = $db->prepare('
 
-                SELECT COUNT (*)
+                SELECT COUNT(id)
                 FROM film;
             
             ');
@@ -207,6 +207,7 @@
 
               $random->execute();
               $randomFilm = $random->fetchAll();
+              $random->closeCursor();
              
 
                ?>
@@ -233,14 +234,17 @@
 
                  <h1 class ="p-3 text-danger marker"> Movies Tracked </h1>
 
+
+                <pre>
                  <?php
 
                     $number->execute();
-                    $numberOfFilms = $random->fetchAll();
+                    $numberOfFilms = $number->fetch();
+                    var_dump($numberOfFilms);
 
                 ?>
-
-                 <p class = "text-danger"> Movies on Database :<?php echo numberOfFilms[0]; ?> </p>
+                </pre>
+                 <p class = "text-danger"> Movies on Database :<?php  echo $numberOfFilms[COUNT(id)]; ?> </p>
 
                  <p class = "text-danger"> Most Popular Genre : Action </p>
 

@@ -14,8 +14,8 @@
 
 
     <title> Film Finder </title>
-  </head>
-  <body>
+     </head>
+      <body>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -24,7 +24,6 @@
 
         <?php include 'includes/headerNav.php'; ?>
 	      <?php require 'includes/database.php';
-
 
         if (!isset($_GET["id"])) {
 
@@ -65,7 +64,7 @@
 
       <div class="row">
 
-       <?php  var_dump($reviews); ?>
+      
 
         <div class = "col-2 carosel">
 
@@ -126,7 +125,7 @@
 
 				  <p class = "text-white"> Review (500 word MAX): <br>
           
-          <input class="form-control" rows = "7" type="text"  Name="reviewContent">
+          <textarea class="form-control" rows = "7" type="textarea"  Name="reviewContent"> </textarea>
 
           <div class="form-check">
           <input class="form-check-input" type="radio" name="likeDislike" id="true" value="1" checked>
@@ -161,7 +160,7 @@
 
         </div>
 
-          <h2> User Reviews:  </h2>
+          <h2 class = "text-white"> User Reviews:  </h2>
 
 
           <?php foreach ($reviews as $review) { ?>
@@ -202,7 +201,7 @@
 
         </div>
 
-        <?php // include 'includes/footer.php'; ?>
+        <?php //include 'includes/footer.php'; ?>
   </body>
 
 
