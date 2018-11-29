@@ -170,13 +170,13 @@
           <h3 class ="p-3 text-danger marker"> <?php echo $review->reviewer; ?> </h3>
           <p class= "text-white">  <?php
           
-          if ($review->liked = '1') {
+          if ($review->liked == '1') {
 
             echo 'Liked It';
 
           }
 
-          elseif ($review->liked = '0') {
+          elseif ($review->liked == '0') {
 
             echo "didn't like it";
 
