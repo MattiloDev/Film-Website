@@ -1,18 +1,9 @@
 <!doctype html>
-<html lang="en">
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link href="Custom.css" rel="stylesheet"/>
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+  
+<?php include 'includes/Head.php';?>
 
 
-    <title> Film Finder </title>
   </head>
   <body>
 
@@ -22,41 +13,16 @@
 
 
 
-        <?php include 'includes/headerNav.php'; ?>
+        <?php
+
+        include 'includes/headerNav.php'; 
+        require 'includes/database.php';
+        require 'includes/Prepared.php';
 
 
 
 
-		<?php require 'includes/database.php';
-
-
-
-
-			 $names = $db->prepare('
-
-				SELECT *
-				FROM film
-				LIMIT 5;
-				ORDER BY theatricalRelease Desc;
-
-            ');
-
-            $number = $db->prepare('
-
-                SELECT COUNT(id)
-                FROM film;
-            
-            ');
-
-             $random = $db->prepare('
-
-                SELECT *
-                FROM film
-                ORDER BY RAND();
-                LIMIT 1;
-
-
-            ');
+		
 
 		    $names->execute();
 			$latest5 = $names->fetchAll();
@@ -239,12 +205,12 @@
                  <?php
 
                     $number->execute();
-                    $numberOfFilms = $number->fetch();
-                    var_dump($numberOfFilms);
+                    $numberOfFilms = $number->fetchAll();
+                   
 
                 ?>
                 </pre>
-                 <p class = "text-danger"> Movies on Database :<?php  echo $numberOfFilms[COUNT(id)]; ?> </p>
+                 <p class = "text-danger"> Movies on Database:<?php  echo COUNT($numberOfFilms); ?> </p>
 
                  <p class = "text-danger"> Most Popular Genre : Action </p>
 
