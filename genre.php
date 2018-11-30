@@ -1,6 +1,17 @@
 <!doctype html>
 
-  <?php include 'includes/Head.php'; ?>
+  <?php include 'includes/Head.php';
+  
+  if (!isset($_GET["id"])) {
+
+    echo "404 Genre not found";
+
+} else {
+
+  $genreIDpre = $_GET["id"];
+  $genreID = $genreIDpre - 1;
+
+}?>
 
 
 
@@ -18,9 +29,17 @@
 
 <?php
 
-$filmInfo->execute();
-$genre = $filmInfo->fetchAll();
-// var_dump($genre);
+$GenreInfo = $db->prepare('
+
+SELECT *
+FROM film
+WHERE genre_id = '.$genreIDpre.';
+
+');
+
+$GenreInfo->execute();
+$genre = $GenreInfo->fetchAll();
+
 
 foreach ($genre as $film) { ?> 
 
@@ -30,7 +49,7 @@ foreach ($genre as $film) { ?>
 
     <div class  = "col-2">
 
-        <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $film->id?>_small.jpg"  height="200" alt="First slide">
+        <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $film->id?>_small.jpg"  height="200" alt="Poster">
 
     </div>
 
