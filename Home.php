@@ -1,34 +1,12 @@
 <!doctype html>
 
   
-<?php include 'includes/Head.php';?>
-
-
-  </head>
-  <body>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-
-        <?php
-
-        include 'includes/headerNav.php'; 
-        require 'includes/database.php';
-        require 'includes/Prepared.php';
-
-
-
-
-		
+<?php include 'includes/Head.php';
 
 		    $names->execute();
 			$latest5 = $names->fetchAll();
 
-
-		?>
+?>
 
         <div class= "container-fluid ">
 
@@ -227,8 +205,6 @@
 
                 <p class = "text-white"> Every Day there is a new Film of the day </p>
 
-
-
             </div>
 
         </div>
@@ -239,21 +215,8 @@
 		<?php include 'includes/footer.php'; ?>
 
 
-
-
-
-
-
-
-
-
         </div>
 
         </div>
-
-
-
-
-
   </body>
 </html>

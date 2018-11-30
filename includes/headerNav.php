@@ -15,7 +15,7 @@
 
                 </a>
 
-                <a class = "navItem text-white pl-4 pr-4" href = "Home.php">
+                <a class = "navItem text-white pl-4 pr-4" href = "genre.php">
 
                     Genres
 
