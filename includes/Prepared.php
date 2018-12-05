@@ -9,6 +9,13 @@ ORDER BY theatricalRelease Desc;
 
 ');
 
+$reviewNumber = $db->prepare('
+
+SELECT id
+FROM review;
+
+');
+
 $number = $db->prepare('
 
 SELECT id

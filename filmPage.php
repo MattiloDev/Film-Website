@@ -26,7 +26,7 @@
 
       $reviewInfo->execute();
       $reviews = $reviewInfo->fetchAll();
-      var_dump ($reviews);
+     
 
       $filmInfo->execute();
  			$info = $filmInfo->fetchAll();
@@ -44,7 +44,7 @@
 
         </div>
 
-        <div class = "col-8 bg-dark p-4">
+        <div class = "col-8 bg-dark pt-5 p-4">
 
           <div class = "container p-2">
 
@@ -70,18 +70,27 @@
 
           </div>
 
-          <h1 class = "text-center text-white marker"> reviews </h1>
+          
 
+          
+          <h1 class = "text-center text-white marker pt-3 pb-3"> reviews </h1>
 
-              <p class = "text-white"> User like ratio : 50% </P> 
-              <p class = "text-white"> IMDB score: 6.8 </p>
+          
+          <div class ="row">
+      
+          <div class = "col-6">
 
-           
+              <h4 class = "text-white"> User like ratio : 50% </P> 
+              <h4 class = "text-white"> IMDB score: 6.8 </p>
+
+          </div> 
+
+          <div class = "col-6">
 
           <h2 class = "marker text-white"> leave a review: </h2>
 
 
-            <div class = row>
+            
 
             
 
@@ -97,7 +106,7 @@
 
 				  <p class = "text-white"> Review (500 word MAX): <br>
           
-          <textarea class="form-control" rows = "7" type="text"  Name="reviewContent"> </textarea>
+          <textarea class="form-control" rows = "7" cols = "40" type="text"  Name="reviewContent"> </textarea>
 
           <div class="form-check">
           <input class="form-check-input" type="radio" name="likeDislike" id="true" value="1" checked>
@@ -122,6 +131,8 @@
         
 
 				</form>
+
+        </div>
 
 
 			</div>
