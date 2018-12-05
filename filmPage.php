@@ -72,19 +72,11 @@
 
           
 
-          
-          <h1 class = "text-center text-white marker pt-3 pb-3"> reviews </h1>
+        
 
           
-          <div class ="row">
-      
-          <div class = "col-6">
-
-              <h4 class = "text-white"> User like ratio : 50% </P> 
-              <h4 class = "text-white"> IMDB score: 6.8 </p>
-
-          </div> 
-
+          <div class ="row pt-5">
+    
           <div class = "col-6">
 
           <h2 class = "marker text-white"> leave a review: </h2>
@@ -134,8 +126,14 @@
 
         </div>
 
+      <div class = "col-6 pt-5 text-center">
 
-			</div>
+        <h4 class = "text-white"> User like ratio : 50% </P> 
+        <h4 class = "text-white"> IMDB score: 6.8 </p>
+
+      </div> 
+
+		</div>
 
       
 
