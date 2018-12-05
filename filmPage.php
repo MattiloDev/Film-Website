@@ -19,12 +19,14 @@
         SELECT *
         FROM review
         WHERE  film_id = '.$filmIDpre.'
+        ORDER BY id DESC
         LIMIT 10;
         
 ');       
 
       $reviewInfo->execute();
       $reviews = $reviewInfo->fetchAll();
+      var_dump ($reviews);
 
       $filmInfo->execute();
  			$info = $filmInfo->fetchAll();
@@ -95,7 +97,7 @@
 
 				  <p class = "text-white"> Review (500 word MAX): <br>
           
-          <textarea class="form-control" rows = "7" type="textarea"  Name="reviewContent"> </textarea>
+          <textarea class="form-control" rows = "7" type="text"  Name="reviewContent"> </textarea>
 
           <div class="form-check">
           <input class="form-check-input" type="radio" name="likeDislike" id="true" value="1" checked>

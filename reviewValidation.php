@@ -8,7 +8,7 @@
     $filmID=$_POST['reviewID'];
     $liked = $_POST['likeDislike'];
 
-    var_dump($liked);
+    var_dump($_POST);
 
 
 	
