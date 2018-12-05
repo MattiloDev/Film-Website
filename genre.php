@@ -47,6 +47,8 @@ foreach ($genre as $film) { ?>
 
     <div class = "row">
 
+    <a class ="link" href="filmPage.php? id=<?php echo $film->id;?>">
+
     <div class  = "col-2">
 
         <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $film->id?>_small.jpg"  height="200" alt="Poster">
@@ -58,6 +60,7 @@ foreach ($genre as $film) { ?>
     <h4 class = "marker"> <?php echo $film->name; ?> </h4>
     <p> <?php echo mb_strimwidth($film->description, 0, 400, "...."); ?> </p>
 
+    </a>
 
     </div>
 

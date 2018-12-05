@@ -105,6 +105,69 @@
 
                 </div>
 
+                <div class="carousel-item">
+
+                <a class ="link" href="filmPage.php? id=<?php echo $latest5[3]->id;?>">
+
+                    <div class = "container">
+
+                        <div class = "row">
+
+                            <div class = "col-md-4">
+                            <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[3]->id?>_massive.jpg"  height="350" alt="First slide">
+
+                        </div>
+
+                        <div class = "col-md-8">
+
+                            <H1><?php echo $latest5[3] -> name; ?></H1>
+                            <p class = "text-white"><?php echo $latest5[3] -> description; ?>   </p>
+
+                        </div>
+
+                    </div>
+
+                    <?php  $names->closeCursor(); ?>
+
+                </div>
+
+                </a>
+
+                </div>
+
+                <div class="carousel-item">
+
+                <a class ="link" href="filmPage.php? id=<?php echo $latest5[4]->id;?>">
+
+                    <div class = "container">
+
+                        <div class = "row">
+
+                            <div class = "col-md-4">
+                            <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[4]->id?>_massive.jpg"  height="350" alt="First slide">
+
+                        </div>
+
+                        <div class = "col-md-8">
+
+                            <H1><?php echo $latest5[4] -> name; ?></H1>
+                            <p class = "text-white"><?php echo $latest5[4] -> description; ?>   </p>
+
+                        </div>
+
+                    </div>
+
+                    <?php  $names->closeCursor(); ?>
+
+                </div>
+
+                </a>
+
+                </div>
+
+               
+
+            
             </div>
 
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -131,14 +194,18 @@
             $random->closeCursor();
              
         ?>
-
+     
         <h1 class ="p-3 text-danger marker"> Film of the Day</h1>
+
+        <a class ="link" href="filmPage.php? id=<?php echo $randomFilm[0]->id;?>">
 
             <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $randomFilm[0]->id;?>_massive.jpg" height = "350" alt = "Film of the day" >
 
             <h2 class = "p-3  text-danger"> <?php echo $randomFilm[0] -> name; ?> </h2>
 
         </div>
+
+         </a>
 
     </div>
 
