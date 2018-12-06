@@ -2,9 +2,9 @@
 
 class Review {
 
-var $reviewer;
-var $liked;
-var $content;
+public $reviewer;
+public $liked;
+public $content;
 
 }
 

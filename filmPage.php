@@ -143,7 +143,7 @@
 
           <h2 class = "text-white"> User Reviews:  </h2>
 
-
+		 
           <?php foreach ($reviews as $review) { ?>
 
           <div class = "border-top border-bottom">
