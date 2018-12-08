@@ -18,12 +18,9 @@ require ('Classes/Film.class.php');
             <h1 class = "text-center pb-3 marker text-white"> Latest Releases </h1>
 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                  
+                <div class="carousel-inner">
                 
-
                     <?php while ($filmOBJ = $names->fetchObject('Film')) { ?>
-
-                      <div class="carousel-inner">
 
                     <?php if ($filmOBJ->id == 1) { 
                       echo   '<div class="carousel-item active">';
@@ -57,28 +54,25 @@ require ('Classes/Film.class.php');
                         </a>
 
                     </div>
-                    </div>
 
-                 <?php } ?>
+            <?php } ?>
 
-                <?php $names->closeCursor() ?>
-                
-            
+        </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
 
         </div>
 
     </div>
 
-
+ <?php $names->closeCursor() ?>
 
     <div class = "col-md-4 text-center bg-dark">
 
@@ -137,7 +131,8 @@ require ('Classes/Film.class.php');
             <p class = "text-white"> Users can leave reviews on films and view the reviews of other users </p>
 
         </div>
-        </div>
+
+    </div>
 
     </div>
 

@@ -2,6 +2,9 @@
 <!doctype html>
 
   <?php include 'includes/Head.php'; 
+  require ('Classes/Film.class.php');
+
+
 
         if (!isset($_GET["id"])) {
 
@@ -22,17 +25,26 @@
         ORDER BY id DESC
         LIMIT 10;
         
-');       
+      ');
+
+      $filmInfo = $db->prepare('
+
+        SELECT *
+        FROM film
+        WHERE  id = '.$filmIDpre.';
+
+      ');
 
       $reviewInfo->execute();
       $reviews = $reviewInfo->fetchAll();
      
 
       $filmInfo->execute();
- 			$info = $filmInfo->fetchAll();
+      $filmOBJ=$filmInfo->fetchObject('Film');
+
+     
 
        ?>
-
 
       <div class="row">
 
@@ -52,39 +64,33 @@
 
               <div class = "col-xl-4 pl-2 center pr-4">
 
-                     <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $info[$filmID]->id?>_massive.jpg"  height="500" alt="First slide">
+                     <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $filmOBJ->id?>_massive.jpg"  height="500" alt="First slide">
 
               </div>
 
               <div class = "col-xl-8 ">
 
-                <h1 class = "pb-3 marker text-white"> <?php echo $info[$filmID]->name?> </h1>
+                <h1 class = "pb-3 marker text-white"> <?php echo $filmOBJ->name?> </h1>
 
-                <p class = "text-white"> Runtime: <?php echo $info[$filmID]->runtime?> Minutes  </p>
-                <p class = "text-white"> Director: <?php echo $info[$filmID]->director?></p>
-                <p class = "text-white"> Classification: <?php echo $info[$filmID]->classification?></p>
-                <p class = "text-white"> <?php echo $info[$filmID]->description?></p>
+                <p class = "text-white"> Runtime: <?php echo $filmOBJ->runtime?> Minutes  </p>
+                <p class = "text-white"> Director: <?php echo $filmOBJ->director?></p>
+                <p class = "text-white"> Classification: <?php echo $filmOBJ->classification?></p>
+                <p class = "text-white"> <?php echo $filmOBJ->description?></p>
+                
+
+                
 
 
               </div>
 
           </div>
 
-          
-
-        
-
-          
           <div class ="row pt-5">
     
           <div class = "col-6">
 
           <h2 class = "marker text-white"> leave a review: </h2>
 
-
-            
-
-            
 
             <div class="form-group">
 
@@ -120,8 +126,6 @@
 
 					</div>
 
-        
-
 				</form>
 
         </div>
@@ -134,10 +138,6 @@
       </div> 
 
 		</div>
-
-      
-
-
 
         </div>
 
