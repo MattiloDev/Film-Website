@@ -2,9 +2,10 @@
 
   
 <?php include 'includes/Head.php';
+require ('Classes/Film.class.php');
 
 	$names->execute();
-    $latest5 = $names->fetchAll();
+    
                 
 ?>
 
@@ -17,10 +18,20 @@
             <h1 class = "text-center pb-3 marker text-white"> Latest Releases </h1>
 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                    <div class="carousel-item active">
+                  
+                
 
-                        <a class ="link" href="filmPage.php? id=<?php echo $latest5[0]->id;?>">
+                    <?php while ($filmOBJ = $names->fetchObject('Film')) { ?>
+
+                      <div class="carousel-inner">
+
+                    <?php if ($filmOBJ->id == 1) { 
+                      echo   '<div class="carousel-item active">';
+                    }  else {
+                       echo  '<div class="carousel-item">';
+                    } ?>
+
+                    <a class ="link" href="filmPage.php? id=<?php echo $filmOBJ->id;?>">
 
                         <div class = "container">
 
@@ -28,14 +39,14 @@
 
                                 <div class = "col-md-4">
 
-                                    <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[0]->id?>_massive.jpg"  height="350" alt="First slide">
+                                    <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $filmOBJ->id?>_massive.jpg"  height="350" alt="First slide">
 
                                 </div>
 
                                 <div class = "col-md-8">
 
-                                    <H1 > <?php echo $latest5[0] -> name; ?> </H1>
-                                    <p class = "text-white"><?php echo $latest5[0] -> description; ?>   </p>
+                                    <H1 > <?php echo $filmOBJ->name; ?> </H1>
+                                    <p class = "text-white"><?php echo $filmOBJ->description; ?>   </p>
 
                                 </div>
 
@@ -45,130 +56,14 @@
 
                         </a>
 
-
+                    </div>
                     </div>
 
-                    <div class="carousel-item ">
+                 <?php } ?>
 
-                        <a class ="link" href="filmPage.php? id=<?php echo $latest5[1]->id;?>">
-                             <div class = "container">
-
-                                <div class = "row">
-
-                                    <div class = "col-md-4">
-
-                                        <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[1]->id?>_massive.jpg"  height="350" alt="First slide">
-
-                                    </div>
-
-                                    <div class = "col-md-8">
-
-                                        <H1><?php echo $latest5[1] -> name; ?></H1>
-                                        <p class = "text-white"><?php echo $latest5[1] -> description; ?>   </p>
-
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                             </a>
-                    </div>
-
-                    <div class="carousel-item">
-
-                    <a class ="link" href="filmPage.php? id=<?php echo $latest5[2]->id;?>">
-
-                        <div class = "container">
-
-                            <div class = "row">
-
-                                <div class = "col-md-4">
-                                <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[2]->id?>_massive.jpg"  height="350" alt="First slide">
-
-                             </div>
-
-                            <div class = "col-md-8">
-
-                                 <H1><?php echo $latest5[2] -> name; ?></H1>
-                                <p class = "text-white"><?php echo $latest5[2] -> description; ?>   </p>
-
-                            </div>
-
-                        </div>
-
-                        <?php  $names->closeCursor(); ?>
-
-                    </div>
-
-                 </a>
-
-                </div>
-
-                <div class="carousel-item">
-
-                <a class ="link" href="filmPage.php? id=<?php echo $latest5[3]->id;?>">
-
-                    <div class = "container">
-
-                        <div class = "row">
-
-                            <div class = "col-md-4">
-                            <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[3]->id?>_massive.jpg"  height="350" alt="First slide">
-
-                        </div>
-
-                        <div class = "col-md-8">
-
-                            <H1><?php echo $latest5[3] -> name; ?></H1>
-                            <p class = "text-white"><?php echo $latest5[3] -> description; ?>   </p>
-
-                        </div>
-
-                    </div>
-
-                    <?php  $names->closeCursor(); ?>
-
-                </div>
-
-                </a>
-
-                </div>
-
-                <div class="carousel-item">
-
-                <a class ="link" href="filmPage.php? id=<?php echo $latest5[4]->id;?>">
-
-                    <div class = "container">
-
-                        <div class = "row">
-
-                            <div class = "col-md-4">
-                            <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $latest5[4]->id?>_massive.jpg"  height="350" alt="First slide">
-
-                        </div>
-
-                        <div class = "col-md-8">
-
-                            <H1><?php echo $latest5[4] -> name; ?></H1>
-                            <p class = "text-white"><?php echo $latest5[4] -> description; ?>   </p>
-
-                        </div>
-
-                    </div>
-
-                    <?php  $names->closeCursor(); ?>
-
-                </div>
-
-                </a>
-
-                </div>
-
-               
-
+                <?php $names->closeCursor() ?>
+                
             
-            </div>
 
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -253,5 +148,8 @@
 
 </div>
 
+
 </body>
+
+
 </html>
