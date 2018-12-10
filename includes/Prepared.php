@@ -40,3 +40,12 @@ FROM film
 
 ');
 
+$genreNames =$db->prepare('
+
+SELECT DISTINCT genre.name, genre.id
+FROM genre
+INNER JOIN film
+ON genre.id = film.genre_id;
+
+');
+

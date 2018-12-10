@@ -1,4 +1,17 @@
  <nav class="navbar navbar-dark navbar-expand-md bg-dark border-bottom border-white ">
+
+ <?php
+     require 'includes/database.php';
+     require 'includes/Prepared.php';
+
+
+                $genreNames->execute();
+                $names = $genreNames->fetchAll();
+
+                //var_dump($names);
+
+?> 
+
                 <a class="navbar-brand" href="Home.php">
                   <img class="p-2" src="Assets/logo_cropped.png" height= "80" alt="Film Site logo">
                 </a>
@@ -16,22 +29,18 @@
                 </a>
 
                 <li class="nav-item dropdown">
-             <a class="navItem marker text-white dropdown-toggle pr-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Genres
-            </a>
+                    <a class="navItem marker text-white dropdown-toggle pr-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Genres
+                     </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-            <a class="dropdown-item" href="genre.php? id=1"> Action </a>
-            <a class="dropdown-item" href="genre.php? id=2"> Animated </a>
-            <a class="dropdown-item" href="genre.php? id=3"> Drama </a>
-            <a class="dropdown-item" href="genre.php? id=4"> Documentary</a>
-            <a class="dropdown-item" href="genre.php? id=5"> Horror</a>
-            <a class="dropdown-item" href="genre.php? id=6"> Comedy</a>
-            <a class="dropdown-item" href="genre.php? id=7"> Western</a>
-            <a class="dropdown-item" href="genre.php? id=8"> Sci-Fi</a>
-            <a class="dropdown-item" href="genre.php? id=9"> Psycological</a>
-            <a class="dropdown-item" href="genre.php? id=10"> Indie</a>
+            <?php foreach ($names as $genre) { ?>
+
+                <a class="dropdown-item" href="genre.php? id=<?php echo $genre->id; ?>"> <?php echo $genre->name; ?> </a>
+
+           <?php  } ?>
+
         </div>
       </li>
 

@@ -1,6 +1,6 @@
 <!doctype html>
 
-  
+
 <?php include 'includes/Head.php';
 require ('Classes/Film.class.php');
 
@@ -11,68 +11,69 @@ require ('Classes/Film.class.php');
 
 <div class= "container-fluid ">
 
-    <div class= "row border-bottom border-white">
+<div class= "row border-bottom border-white">
 
-        <div class = "col-md-8  p-4 pt-3 pb-5 carosel">
+    <div class = "col-md-8  p-4 pt-3 pb-5 carosel">
 
-            <h1 class = "text-center pb-3 marker text-white"> Latest Releases </h1>
+        <h1 class = "text-center pb-3 marker text-white"> Latest Releases </h1>
 
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                
-                    <?php while ($filmOBJ = $names->fetchObject('Film')) { ?>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+            
+                <?php while ($filmOBJ = $names->fetchObject('Film')) { ?>
 
-                    <?php if ($filmOBJ->id == 1) { 
-                      echo   '<div class="carousel-item active">';
-                    }  else {
-                       echo  '<div class="carousel-item">';
-                    } ?>
+                <?php if ($filmOBJ->id == 1) { 
+                  echo   '<div class="carousel-item active">';
+                }  else {
+                   echo  '<div class="carousel-item">';
+                } ?>
 
-                    <a class ="link" href="filmPage.php? id=<?php echo $filmOBJ->id;?>">
+                <a class ="link" href="filmPage.php? id=<?php echo $filmOBJ->id;?>">
 
-                        <div class = "container">
+                    <div class = "container">
 
-                             <div class = "row ">
+                         <div class = "row ">
 
-                                <div class = "col-md-4">
+                            <div class = "col-md-4">
 
-                                    <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $filmOBJ->id?>_massive.jpg"  height="350" alt="First slide">
+                                <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $filmOBJ->id?>_massive.jpg"  height="350" alt="First slide">
 
-                                </div>
+                            </div>
 
-                                <div class = "col-md-8">
+                            <div class = "col-md-8">
 
-                                    <H1 > <?php echo $filmOBJ->name; ?> </H1>
-                                    <p class = "text-white"><?php echo $filmOBJ->description; ?>   </p>
-
-                                </div>
+                                <H1 > <?php echo $filmOBJ->name; ?> </H1>
+                                <p class = "text-white"><?php echo $filmOBJ->description; ?>   </p>
 
                             </div>
 
                         </div>
 
-                        </a>
-
                     </div>
 
-            <?php } ?>
+                    </a>
 
-        </div>
+                </div>
 
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
-        </div>
+        <?php } ?>
 
     </div>
 
- <?php $names->closeCursor() ?>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+    </div>
+
+</div>
+
+<?php $names->closeCursor() ?>
+
 
     <div class = "col-md-4 text-center bg-dark">
 
@@ -131,8 +132,7 @@ require ('Classes/Film.class.php');
             <p class = "text-white"> Users can leave reviews on films and view the reviews of other users </p>
 
         </div>
-
-    </div>
+        </div>
 
     </div>
 

@@ -70,6 +70,8 @@ foreach ($genre as $film) { ?>
 
 <?php } ?>
 
-<div>
+</div>
+
+  <?php include 'includes/footer.php'; ?>
 
 

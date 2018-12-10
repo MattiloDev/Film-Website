@@ -13,19 +13,19 @@ p {
 
 .marker {
 
-font-family: 'Permanent Marker', cursive;
+font-family: 'Permanent Marker', sans-serif;
 
 }
 
 .navItem {
 
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Permanent Marker', sans-serif;
 
     font-size: 26px;
 
-    
-
 }
+
+
 
 .link {
 	
@@ -36,21 +36,16 @@ font-family: 'Permanent Marker', cursive;
 
 }
 
+.myFooter {
+
+width: 100%;
+
+}
+
 .carosel {
 
+    
     background-color: #8D0033;
 
-
 }
 
-.footer {
-
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    
-   
-
-}

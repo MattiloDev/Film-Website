@@ -1,9 +1,10 @@
 
+ <link href="Custom.css" rel="stylesheet"/>
 
-<div class="footer bg-dark text-center p-4 border-top border-white text-white">
-
-
-  <p>  Film Finder&copy;  <?php echo date("Y")?>    </p>
+<footer class="myFooter text-white bg-dark text-center p-4 pt-0 border-top border-white ">
 
 
-</div>
+  <p>  Film Finder &copy;  <?php echo date("Y")?>    </p>
+
+
+</footer>

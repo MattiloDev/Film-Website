@@ -1,7 +1,6 @@
 
 <?php
 
-
 Class Film {
 
 public $id;
@@ -15,22 +14,33 @@ public $id;
 	public $theatricalRelease;
     public $dvdRelease;
     
-    public function getActors() {
+ function printActors($input) {
 
-      include("includes/database.php");
+	include ('includes/database.php');
 
-      $actors = $db->prepare("
-    
-       SELECT *
-       FROM role
-       WHERE film_id = ?
+	$actors  = $db->prepare("  
+	
+		SELECT role.character, actor.name
+		FROM role
+		INNER JOIN actor
+		ON role.actor_id = actor.id
+		WHERE film_id = ?
 
-    ");
+	");
 
-    $actors->execute([$this->id]);
+	$actors->execute([$input]);
 
-    return $actors;
+	while ($actorsOBJ = $actors->fetchObject()) {
+	
+		echo $actorsOBJ->name;
+		echo " as ";
+		echo $actorsOBJ->character;
+		echo "<br>";
 
-    }
+	}
+
+	return $actorsOBJ;
+
+}
 
 }
