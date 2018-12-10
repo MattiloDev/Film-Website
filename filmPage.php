@@ -35,22 +35,38 @@ require ('Classes/Film.class.php');
 
     ');
 
+    $OMDBinfo = $db->prepare('
+      
+      SELECT imdb_id
+      FROM film
+      WHERE  id = '.$filmIDpre.';
+    
+    ');
+
     $reviewInfo->execute();
     $reviews = $reviewInfo->fetchAll();
-   
 
+    $OMDBinfo->execute();
+    $OMDB = $OMDBinfo->fetchAll();
+
+    $stream  = file_get_contents('http://www.omdbapi.com/?apikey=de376b8f&i=tt1731141');
+    $filmIMDB = json_decode($stream);
+
+   var_dump($filmIMDB);
+
+   
+      
     $filmInfo->execute();
     $filmOBJ=$filmInfo->fetchObject('Film');
    
      ?>
 
+     
     <div class="row">
-
-    
 
       <div class = "col-2 carosel">
 
-
+      
 
       </div>
 
@@ -74,22 +90,16 @@ require ('Classes/Film.class.php');
               <p class = "text-white"> Director: <?php echo $filmOBJ->director?></p>
               <p class = "text-white"> Classification: <?php echo $filmOBJ->classification?></p>
               <p class = "text-white"> <?php echo $filmOBJ->description?></p>
-              
-
-              
-
-
+            
             </div>
 
         </div>
-
 
         <div class ="row pt-5">
   
         <div class = "col-6">
 
         <h2 class = "marker text-white"> leave a review: </h2>
-
 
           <div class="form-group">
 
@@ -134,7 +144,6 @@ require ('Classes/Film.class.php');
       <h1 class = "text-center marker text-white"> Cast </h1>
 
 <h3 class = "text-white text-center pt-3"><?php $filmOBJ->printActors($filmOBJ->id); ?></h3>
-
 
     </div> 
 
