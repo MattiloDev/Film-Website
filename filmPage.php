@@ -49,16 +49,21 @@ require ('Classes/Film.class.php');
     $OMDBinfo->execute();
     $OMDB = $OMDBinfo->fetchAll();
 
-    $stream  = file_get_contents('http://www.omdbapi.com/?apikey=de376b8f&i=tt1731141');
-    $filmIMDB = json_decode($stream);
 
-   var_dump($filmIMDB);
 
    
       
     $filmInfo->execute();
     $filmOBJ=$filmInfo->fetchObject('Film');
+
+
+
+
+    $stream  = file_get_contents('http://www.omdbapi.com/?apikey=de376b8f&i='.$filmOBJ->imdb_id.'');
+    $filmIMDB = json_decode($stream);
    
+   // var_dump($filmIMDB);
+
      ?>
 
      
@@ -89,6 +94,44 @@ require ('Classes/Film.class.php');
               <p class = "text-white"> Runtime: <?php echo $filmOBJ->runtime?> Minutes  </p>
               <p class = "text-white"> Director: <?php echo $filmOBJ->director?></p>
               <p class = "text-white"> Classification: <?php echo $filmOBJ->classification?></p>
+      
+              <?php if ($filmIMDB->Metascore > 0 && $filmIMDB->Metascore < 40 ) { ?>
+
+              <p class = "text-white"> Metacritic Score: </p>
+              
+              <div class ="rating bg-danger">
+
+               <p class = "text-white ratingText"> <?php echo $filmIMDB->Metascore?></p>
+
+              </div>
+
+            <?php  } elseif($filmIMDB->Metascore > 40 && $filmIMDB->Metascore < 65) { ?>
+
+              <p class = "text-white"> Metacritic Score: </p> 
+
+              <div class ="rating bg-warning">
+              
+              <p class = "rating text-white ratingText">  <?php echo $filmIMDB->Metascore?></p>
+
+              </div>
+
+            <?php  } elseif ($filmIMDB->Metascore >= 65 && $filmIMDB->Metascore <= 100) { ?>
+
+               <p class = "text-white"> Metacritic Score: </p>
+
+               <div class ="rating bg-success">
+               
+                <p class = "text-white ratingText"> <?php echo $filmIMDB->Metascore?></p>
+
+              </div>
+              
+            <?php  } else { ?>
+
+              <p class = "text-white"> Film has no Metacritic ratings </p>
+
+            <?php } ?>
+
+
               <p class = "text-white"> <?php echo $filmOBJ->description?></p>
             
             </div>
