@@ -30,7 +30,9 @@
 
                 <li class="nav-item dropdown">
                     <a class="navItem marker text-white dropdown-toggle pr-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                           Genres
+                          
                      </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

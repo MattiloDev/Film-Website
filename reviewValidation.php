@@ -1,12 +1,14 @@
 
-<?php 
+<?php
+    
+   // header('Location: filmPage.php? id='.echo $filmID;.'');
 
     include 'includes/database.php'; 
 
-	$name=$_POST['reviewerName'];
-	$review=$_POST['reviewContent'];
-    $filmID=$_POST['reviewID'];
-    $liked = $_POST['likeDislike'];
+	$name= strip_tags(trim($_POST['reviewerName']));
+	$review= strip_tags(trim($_POST['reviewContent']));
+    $filmID= strip_tags(trim($_POST['reviewID']));
+    $liked =  strip_tags(trim($_POST['likeDislike']));
 
     var_dump($_POST);
 
@@ -19,6 +21,6 @@
 
         ');
         
-    $Statement->execute(array(':filmid' => $filmID,':name' => $name,':comment' => $review, ':liked' => $liked));
+     $Statement->execute(array(':filmid' => $filmID,':name' => $name,':comment' => $review, ':liked' => $liked));
     
 ?>

@@ -11,7 +11,14 @@
   $genreIDpre = $_GET["id"];
   $genreID = $genreIDpre - 1;
 
-}?>
+}
+
+$genreNames->execute();
+$names = $genreNames->fetchAll();
+
+?>
+
+
 
 
 
@@ -19,9 +26,16 @@
 
       
 
-<div class = "col-3 bg-dark">
+<div class = "col-3 text-center bg-dark">
 
+<h1 class = "marker pt-4 pb-3 text-white"> Genres: </h1> 
 
+<?php foreach ($names as $genre) { ?>
+
+<a class = "nostyle text-lg pb-2 text-white marker" href="genre.php? id=<?php echo $genre->id; ?>"> <?php echo $genre->name; ?> </a>
+<br>
+
+<?php  } ?>
 
 </div>
 
