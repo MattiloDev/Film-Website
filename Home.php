@@ -1,17 +1,17 @@
-<!doctype html>
-
 <?
 /**
-*   Home.php
-*
-*   Page is responsible for rendering the home screen
-*   
-*   @author Matthew Hutchings
-*   @category PHP file
-*   
-*
-*/
+ *   Home.php
+ *
+ *   Page is responsible for rendering the home screen
+ *
+ *   @author Matthew Hutchings
+ *   @category PHP file
+ *
+ *
+ */
 ?>
+
+<!doctype html>
 
 <?php 
 

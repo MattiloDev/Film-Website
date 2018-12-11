@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class Review
+ */
+
+
 class Review {
 
 public $reviewer;

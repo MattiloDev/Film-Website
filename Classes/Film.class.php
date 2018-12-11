@@ -1,5 +1,9 @@
+/**
+* Class Film
+*/
 
 <?php
+
 
 Class Film {
 
@@ -13,8 +17,16 @@ public $id;
 	public $classification;
 	public $theatricalRelease;
     public $dvdRelease;
-    
- function printActors($input) {
+
+    /**
+     * printActors
+     *
+     * Prints the top 5 cast members from the selected film along with thier roles.
+     *
+     * @param $input
+     * @return mixed
+     */
+    function printActors($input) {
 
 	include ('includes/database.php');
 

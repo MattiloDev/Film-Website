@@ -1,3 +1,20 @@
+<?
+
+/**
+*  genre.php
+ *
+ * Loads the films that belong to the requested genre
+ *
+ * @category php file
+ *
+ *
+ *
+ *
+ *
+ */
+
+?>
+
 <!doctype html>
 
   <?php include 'includes/Head.php';
