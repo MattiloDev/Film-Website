@@ -1,3 +1,13 @@
+<?
+/**
+ * Head.php
+ * 
+ * Configures the HTML settings across all webpages and loads the require includes for all pages
+ * 
+ * @category php file
+ * @author Matthew Hutchings
+ */
+?>
 
     <html lang="en">
 
