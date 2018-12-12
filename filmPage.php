@@ -240,6 +240,8 @@ require ('Classes/Film.class.php');// enables use of the film class
 
     <!-- printActors() method is called, used to display the main 5 cast members of each film -->
     <h3 class = "text-white text-center pt-3"><?php $filmOBJ->printActors($filmOBJ->id); ?></h3> 
+    <h3 class = "text-white text-center pt-3"> test <?php $filmOBJ->setMetascore(); ?></h3> 
+
 
     </div> 
 

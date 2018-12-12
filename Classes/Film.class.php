@@ -1,9 +1,14 @@
+<?
 /**
-* Class Film
-*/
+ * Film.class.php
+ * 
+ * Class used to define and call functions on film objects
+ * 
+ */
+
+
 
 <?php
-
 
 Class Film {
 
@@ -16,43 +21,69 @@ public $id;
 	public $director;
 	public $classification;
 	public $theatricalRelease;
-    public $dvdRelease;
-
-    /**
-     * printActors
-     *
-     * Prints the top 5 cast members from the selected film along with thier roles.
-     *
-     * @param $input
-     * @return mixed
-     */
-    function printActors($input) {
-
-	include ('includes/database.php');
-
-	$actors  = $db->prepare("  
+	public $dvdRelease;
+	public $imdb_id;
+	public $metascore;
 	
-		SELECT role.character, actor.name
-		FROM role
-		INNER JOIN actor
-		ON role.actor_id = actor.id
-		WHERE film_id = ?
+		/**
+		* printActors()
+        * 
+		* prints the top five actors and thier roles from the selected film
+		
+        * @category function
+        * @author Matthew Hutchings 
+		*
+		* @param film, int, id of the selected film 
+		*/
 
-	");
+ 	function printActors($film) {
 
-	$actors->execute([$input]);
+		include ('includes/database.php');
 
-	while ($actorsOBJ = $actors->fetchObject()) {
+		$actors  = $db->prepare("  
 	
-		echo $actorsOBJ->name;
-		echo " as ";
-		echo $actorsOBJ->character;
-		echo "<br>";
+			SELECT role.character, actor.name
+			FROM role
+			INNER JOIN actor
+			ON role.actor_id = actor.id
+			WHERE film_id = ?
+
+		");
+
+		$actors->execute([$film]);
+
+		while ($actorsOBJ = $actors->fetchObject()) {
+	
+			echo $actorsOBJ->name;
+			echo " as ";
+			echo $actorsOBJ->character;
+			echo "<br>";
+
+		}
+
+		return $actorsOBJ;
 
 	}
+	  		
+	 	/**
+		* setMetascore()
+        * 
+        * Sets the metascore of a film
+        * @category function
+        * @author Matthew Hutchings 
+		* 
+		*/
+		
+ 	function setMetascore() {
 
-	return $actorsOBJ;
+		$stream;
 
-}
+	 	$stream = json_decode(file_get_contents('http://www.omdbapi.com/?apikey=de376b8f&i='.$this->imdb_id.''));
+
+	 	$this->metascore = $stream->Metascore;
+
+		echo $this->metascore;
+
+ 	}
 
 }
