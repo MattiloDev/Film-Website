@@ -5,7 +5,7 @@
  * Class used to define and call functions on film objects
  * 
  */
-
+?>
 
 
 <?php

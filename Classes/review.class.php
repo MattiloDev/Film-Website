@@ -1,9 +1,16 @@
-<?php
-
+<?
 /**
- * Class Review
+ * review.class.php 
+ * 
+ * Class to handle review objects
+ * 
  */
 
+
+
+
+
+<?php
 
 class Review {
 
@@ -18,23 +25,5 @@ function __construct($reviewer,$liked,$content) {
 $this->reviewer = $reviewer;
 $this->liked = $liked;
 $this->content = $content;
-
-}
-
-function getName() {
-
-return $this->reviewer;
-
-}
-
-function likedFilm(){
-
-return $this->liked;
-
-}
-
-function getContent() {
-
-return $this->content;
 
 }

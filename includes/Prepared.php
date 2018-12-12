@@ -28,7 +28,28 @@ ORDER BY theatricalRelease Desc;
 ');
 
 /*
- * $reviewNumber 
+ * $reviewCounter
+ * 
+ * Gets the top 3 films by the number of positive reviews 
+ * 
+ */
+
+$reviewCounter = $db->prepare('
+
+SELECT COUNT(review.id) as num, film.name, film.id, film.description
+FROM film
+INNER JOIN review
+ON film.id = review.film_id
+WHERE review.liked = 1
+GROUP BY film.name
+ORDER BY COUNT(review.id) DESC
+
+LIMIT 3;
+
+');
+
+/*
+ * $reviewNumber
  * 
  * selects all IDs from the review table, used to count the number of reviews on the website
  * 
@@ -82,6 +103,19 @@ $filmInfo = $db->prepare('
 
 SELECT *
 FROM film
+
+');
+
+/*
+ * $filmInfoI
+ * 
+ * gets the imbd id of all films in the database
+ */
+
+$filmInfoI = $db->prepare('
+
+SELECT imdb_id
+FROM film;
 
 ');
 

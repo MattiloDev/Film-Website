@@ -1,17 +1,17 @@
+<!doctype html>
+
 <?
 /**
- *   Home.php
- *
- *   Page is responsible for rendering the home screen
- *
- *   @author Matthew Hutchings
- *   @category PHP file
- *
- *
- */
+*   Home.php
+*
+*   Page is responsible for rendering the home screen
+*   
+*   @author Matthew Hutchings
+*   @category PHP file
+*   
+*
+*/
 ?>
-
-<!doctype html>
 
 <?php 
 
@@ -105,7 +105,7 @@
 <?php $names->closeCursor() // closes the execution of this query so other queries can be loaded ?>
 
 
-    <div class = "col-md-4 text-center bg-dark"> <!-- container for the random film feature -->
+    <div class = "col-md-4 text-center bg-dark center-block"> <!-- container for the random film feature -->
 
         <?php
 
@@ -160,16 +160,15 @@
             <p class = "text-danger"> Reviews on Database: <?php echo COUNT($reviewNum); ?>  </p>
 
             <!-- count is used to get the number of items inside the array and print it -->
-
+        
+        
         </div>
 
         <div class = "col-md-8 text-center   carosel">
 
-            <h1 class ="p-3 text-white marker"> What is Film Finder? </h1>
+            <h1 class ="p-3 text-white marker"> Film Finder by Red Carpet Films </h1>
 
             <p class = "text-white"> Film Finder is a Online Database that stores information on the lastest films</p>
-
-            <p class = "text-white"> Every Day there is a new Film of the day </p>
 
             <p class = "text-white"> Users can leave reviews on films and view the reviews of other users </p>
 
@@ -180,25 +179,66 @@
 
      </div>
 
+       
+    </div>
+
+    </div>
+
+    </div>
 
 
-        <div class = "row bg-dark pt-4 center-block ">
-                
-                <div class = "col-12 text-center">
-            <h1 class = "text-center marker pb-2 text-white">  ipsum lorem  </h1>
-            
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremipsumsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremiremipsum loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum  loremipsum loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loipsum loremipsum loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremipsum  loremipsum loremipsum loremipsum lorem </P>
-            <p class = "text-white"> ipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum lorem </P>
+    <div class = "row">
+
+        <div class = "col-12 bg-dark">
+
+        <h1 class  ="text-danger text-center border-bottom border-white marker p-4"> Top 3 films by our users </h1>
 
         
+
+        <?php
+        
+        $reviewCounter->execute();
+        $likedfilms = $reviewCounter->fetchAll();
+        
+        /**
+         * 
+         * foreach to render each of the top 3 films
+         * 
+         * @param $likedfilms, Film[], array containing the relevant information about the top three films
+         * 
+         */
+
+        foreach ($likedfilms as $film) { ?> 
+
+            <a class ="link" href="filmPage.php? id=<?php echo $film->id; ?>">
+
+            <div class  = "container border-bottom border-white pt-4 pb-4">
+
+                <div class = "row"> 
+
+                <div class  = "col-sm-3 ">
+
+                    <img src="http://comp2203.ecs.soton.ac.uk/coursework/1617/assets/posters/<?php echo $film->id ?>_massive.jpg"  height="300" alt="Poster">
+                    
+
+                </div>
+
+                <div class  = "col-sm-9 border-left border-white">
+
+                    <h4 class = "marker text-danger"> <?php echo $film->name; ?> </h4>
+                    <h4 class = "text-danger"> <?php echo $film->num ?> People Liked this film </h4>
+                    <p class = "text-white"> <?php echo mb_strimwidth($film->description, 0, 400, "...."); ?>
+
+                </div>
+
+                </div>
+            
             </div>
 
+            </a>
+    
+        <?php } ?>
+    
         </div>
 
     </div>

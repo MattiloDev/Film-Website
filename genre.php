@@ -1,28 +1,38 @@
 <?
-
 /**
-*  genre.php
- *
- * Loads the films that belong to the requested genre
- *
+ * genre.php
+ * 
+ * Responsible for rendering links to films of the selected genre 
+ * 
  * @category php file
- *
+ * @author Matthew Hutchings
+ * 
  */
-
 ?>
 
 <!doctype html>
 
-  <?php include 'includes/Head.php';
-  
-  if (!isset($_GET["id"])) {
+<?
+/**
+ * if statement to check what id has been passed into genre.php
+ * 
+ * @param id, int, id passed into the url to detirmine which genre has been selected
+ * 
+ * @var $genreIDpre, int, id taken from page url
+ * @var $genreID, int, id after it has been processed
+ */
+?>
 
-    echo "404 Genre not found";
+<?php include 'includes/Head.php';
+  
+  if (!isset($_GET["id"])) { //checks if the id field is set
+
+    echo "404 Genre not found"; 
 
 } else {
 
   $genreIDpre = $_GET["id"];
-  $genreID = $genreIDpre - 1;
+  $genreID = $genreIDpre - 1; //minus 1 is used because of conversion from id column starting at 1 and array pointer starting at 0
 
 }
 
@@ -37,11 +47,16 @@ $names = $genreNames->fetchAll();
 
 <div class="row">
 
-      
-
 <div class = "col-3 text-center bg-dark">
 
 <h1 class = "marker pt-4 pb-3 text-white"> Genres: </h1> 
+
+<?
+/**
+ * foreach to print side menu of the different genres availible in the database
+ * 
+ */
+?>
 
 <?php foreach ($names as $genre) { ?>
 
@@ -67,6 +82,11 @@ WHERE genre_id = '.$genreIDpre.';
 $GenreInfo->execute();
 $genre = $GenreInfo->fetchAll();
 
+/** 
+ * foreach to print links to the films that belong to the selected genre
+ * 
+ * @param $names 
+ */
 
 foreach ($genre as $film) { ?> 
 
@@ -85,7 +105,7 @@ foreach ($genre as $film) { ?>
     <div class = "col-10">
 
     <h4 class = "marker"> <?php echo $film->name; ?> </h4>
-    <p> <?php echo mb_strimwidth($film->description, 0, 400, "...."); ?> </p>
+    <p> <?php echo mb_strimwidth($film->description, 0, 400, "...."); //trims the length of the description to 400 characters for easier display ?> </p>
 
     </a>
 
